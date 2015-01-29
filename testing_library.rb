@@ -12,10 +12,10 @@ def green(string)
   colorize(green_color_code, string)
 end
 
-def check(method_to_check, it_passed)
-  if it_passed
+def check(method_to_check, returned_value, expected_value)
+  if returned_value == expected_value
     green("Awesome! #{method_to_check} works")
   else
-    red("#{method_to_check} doesn't work yet")
+    red("#{method_to_check} doesn't work yet: Expected #{expected_value}, got #{returned_value}\n")
   end
 end
