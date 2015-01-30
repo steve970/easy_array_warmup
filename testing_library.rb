@@ -25,9 +25,8 @@ end
 
 def send_results(results)
   conn = Faraday.new(:url => 'https://secret-shelf-7893.herokuapp.com/') do |faraday|
-    faraday.request  :url_encoded             # form-encode POST params
-    faraday.response :logger                  # log requests to STDOUT
-    faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+    faraday.request  :url_encoded
+    faraday.adapter  Faraday.default_adapter 
   end
 
   counts = Hash.new 0
@@ -37,7 +36,6 @@ def send_results(results)
   end
 
   name = File.open(".name").read
-
 
   conn.post '/submissions', { :user => name, passed: counts["passed"], failed: counts["failed"] }
 end
