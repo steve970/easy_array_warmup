@@ -24,7 +24,7 @@ def check(method_to_check, returned_value, expected_value)
 end
 
 def send_results(results)
-  conn = Faraday.new(:url => 'http://localhost:3000') do |faraday|
+  conn = Faraday.new(:url => 'https://secret-shelf-7893.herokuapp.com/submissions') do |faraday|
     faraday.request  :url_encoded
     faraday.adapter  Faraday.default_adapter
   end
